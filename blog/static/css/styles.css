@@ -1,0 +1,19 @@
+.container-fluid{
+    background-color: green;
+    height: 100px;
+}
+
+footer{
+    background-color: green;
+}
+
+/* carousel */
+
+.cook {
+    height: 550px;
+}
+
+.form{
+    border-radius: 50px;
+}
+

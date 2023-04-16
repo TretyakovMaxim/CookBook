@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>My recipes</h1> <br>
+
+{% if recipes %}
+    <ul>
+        {% for recipe in recipes %}
+    <li>
+        <h2><a href="{{ url_for('recipe_details', recipe_id=recipe.id) }}">{{ recipe.name }}</a></h2>
+        <p>{{ recipe.body[:25]|safe }}...</p>
+        <p>Author: {{ user.username }}</p>
+        <a href="{{ url_for('recipe_delete', recipe_id=recipe.id) }}" class="btn btn-danger">Delete recipe</a>
+    </li>
+{% endfor %}
+    </ul>
+{% else %}
+    <p><h2>No recipes yet</h2></p>
+{% endif %}
+
+{% endblock %}
