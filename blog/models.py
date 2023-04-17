@@ -51,35 +51,19 @@ class User(UserMixin, db.Model):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
 
-    def followed_posts(self):
-        followed = Post.query.join(
-            followers, (followers.c.followed_id == Post.user_id)).filter(
-            followers.c.follower_id == self.id)
-        own = Post.query.filter_by(user_id=self.id)
-        return followed.union(own).order_by(Post.timestamp.desc())
-
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
+            app.config['SECRET_KEY'], algorithm='HS256')
 
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['reset_password']
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
         except:
             return
         return User.query.get(id)
-
-    def send_password_reset_email(user):
-        token = user.get_reset_password_token()
-        send_email('[Microblog] Reset Your Password',
-                   sender=app.config['ADMINS'][0],
-                   recipients=[user.email],
-                   text_body=render_template('email/reset_password.txt',
-                                             user=user, token=token),
-                   html_body=render_template('email/reset_password.html',
-                                             user=user, token=token))
 
 
 @login.user_loader

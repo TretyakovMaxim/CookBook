@@ -4,7 +4,6 @@ from flask_wtf.file import FileAllowed, FileField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 
-
 from blog.models import User
 
 
@@ -25,7 +24,6 @@ class ResetPasswordForm(FlaskForm):
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Request Password Reset')
-
 
 
 class RegistrationForm(FlaskForm):
@@ -71,9 +69,3 @@ class AddNewRecipe(FlaskForm):
     body = CKEditorField('Body', validators=[DataRequired()])
     image = FileField('Image', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'gif'])])
     submit = SubmitField('Submit')
-
-
-
-
-
-
