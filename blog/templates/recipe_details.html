@@ -6,5 +6,4 @@
 <p>{{ recipe.body.replace('\n', '<br>')|safe}}</p>
 <p>Author: {{ recipe.author.username }}</p>
 <a href="{{ url_for('recipe_delete', recipe_id=recipe.id) }}" class="btn btn-danger">Delete recipe</a>
-<!--<p><a href="/recipes/{{ recipe }}/del" class="btn btn-danger">Delete recipe</a></p>-->
 {% endblock %}

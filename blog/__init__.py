@@ -8,6 +8,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_mail import Mail
+from flask_moment import Moment
 from config import Config, basedir
 
 app = Flask(__name__)
@@ -22,6 +23,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 mail = Mail(app)
+moment=Moment(app)
 login.login_view = 'login'
 
 if not app.debug:

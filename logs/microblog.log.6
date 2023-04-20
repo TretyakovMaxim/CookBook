@@ -1,0 +1,110 @@
+2023-03-30 18:26:46,370 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-03-30 18:27:55,345 ERROR: Exception on /edit_profile [POST] [in /home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/flask/app.py:1744]
+Traceback (most recent call last):
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 748, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/home/tretyakov/PycharmProjects/CookBook/blog/routes.py", line 87, in edit_profile
+    db.session.commit()
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 553, in commit
+    return self._proxied.commit()
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1903, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1218, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1193, in _prepare_impl
+    self.session.flush()
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 4155, in flush
+    self._flush(objects)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 4292, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 4252, in _flush
+    flush_context.execute()
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 644, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 85, in save_obj
+    _emit_update_statements(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 890, in _emit_update_statements
+    c = connection.execute(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1414, in execute
+    return meth(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 486, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2326, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/tretyakov/PycharmProjects/CookBook/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 748, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('Maxim', 'Я Макс. И это я разработчик сайта на котором вы сейчас лазите=)', 2)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2023-03-30 20:13:45,583 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 10:44:51,843 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 10:44:53,695 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:27:05,748 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:49:20,980 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:51:04,721 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:55:35,319 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:56:18,300 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:56:58,575 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:57:01,903 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:57:16,551 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:57:23,796 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:57:43,543 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:57:49,221 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 11:58:09,245 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 13:19:03,380 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 13:19:55,026 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 13:20:29,494 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 13:20:33,871 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 14:44:26,251 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 14:44:28,495 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 14:52:30,808 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:18:26,931 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:18:28,855 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:19:54,089 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:43:40,825 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:44:09,484 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:44:36,784 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:44:37,851 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:48:57,230 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:49:58,077 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:54:59,484 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:55:24,029 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:55:25,091 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 15:59:39,071 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
+2023-04-02 16:04:38,113 INFO: CookBook startup [in /home/tretyakov/PycharmProjects/CookBook/blog/__init__.py:49]
